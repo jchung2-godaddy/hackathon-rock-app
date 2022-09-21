@@ -10,9 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'GoDaddy',
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.teal,
+        fontFamily: 'GD Sherpa',
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const MyHomePage(title: 'GoDaddy'),
     );
@@ -37,30 +39,40 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  // blue - const Color.fromRGBO(25, 118, 210, 1),
+  // black - const Color.fromRGBO(17, 17, 17, 1),
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.fromRGBO(25, 118, 210, 1),
+              Color.fromRGBO(116, 75, 196, 1),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: SafeArea(
+          child: Column(
+            children: const [
+              Image(
+                image: AssetImage('assets/GD_GUIDES_RGB_REVERSE_NO_MARK.png'),
+              ),
+              Text(
+                'Route On Call Knowledge',
+                style: TextStyle(
+                  fontFamily: 'GD Sherpa',
+                  fontSize: 22,
+                  color: Color.fromRGBO(252, 252, 252, 1),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
