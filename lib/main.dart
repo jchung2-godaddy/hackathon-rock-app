@@ -32,11 +32,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final PageController _pageController = PageController();
-  final List<Widget> _screens = const [
-    IntroScreen(),
-    IntroScreen(),
-    IntroScreen(),
+  static final PageController _pageController = PageController();
+  final List<Widget> _screens = [
+    IntroScreen(pageController: _pageController),
+    IntroScreen(pageController: _pageController),
+    IntroScreen(pageController: _pageController),
   ];
   double currentPage = 0;
   int selectedIndex = 0;
@@ -87,34 +87,39 @@ class _MyHomePageState extends State<MyHomePage> {
               return _screens[index];
             },
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            height: 150,
-            width: double.infinity, // Code to assign full width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 35),
-                  child: Row(
-                    children: <Widget>[
-                      for (int i = 0; i < _screens.length; i++)
-                        if (i == currentPage) ...[circleBar(true)] else
-                          circleBar(false),
-                    ],
+          Visibility(
+            visible: currentPage != 0,
+            child: Positioned(
+              bottom: 0,
+              left: 0,
+              height: 150,
+              width: MediaQuery.of(context)
+                  .size
+                  .width, // Code to assign full width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 35),
+                    child: Row(
+                      children: <Widget>[
+                        for (int i = 0; i < _screens.length; i++)
+                          if (i == currentPage) ...[circleBar(true)] else
+                            circleBar(false),
+                      ],
+                    ),
                   ),
-                ),
-                Visibility(
-                  visible: currentPage == _screens.length - 1 ? true : false,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    shape: const BeveledRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(26))),
-                    child: const Icon(Icons.arrow_forward),
-                  ),
-                )
-              ],
+                  Visibility(
+                    visible: currentPage == _screens.length - 1 ? true : false,
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(26))),
+                      child: const Icon(Icons.arrow_forward),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],
