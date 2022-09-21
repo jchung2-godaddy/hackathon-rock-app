@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rock/screens/intro_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,48 +32,92 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final PageController _pageController = PageController();
+  final List<Widget> _screens = const [
+    IntroScreen(),
+    IntroScreen(),
+    IntroScreen(),
+  ];
+  double currentPage = 0;
+  int selectedIndex = 0;
 
-  void _incrementCounter() {
+  @override
+  void initState() {
+    _pageController.addListener(() {
+      setState(() {
+        currentPage = _pageController.page!;
+      });
+    });
+    super.initState();
+  }
+
+  void _getChangedPageAndMoveBar(int page) {
     setState(() {
-      _counter++;
+      currentPage = page.toDouble();
     });
   }
 
+  Widget circleBar(bool isActive) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 150),
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      height: isActive ? 12 : 8,
+      width: isActive ? 12 : 8,
+      decoration: BoxDecoration(
+          color: isActive ? Colors.white : const Color.fromRGBO(17, 17, 17, 1),
+          borderRadius: const BorderRadius.all(Radius.circular(12))),
+    );
+  }
   // blue - const Color.fromRGBO(25, 118, 210, 1),
   // black - const Color.fromRGBO(17, 17, 17, 1),
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color.fromRGBO(25, 118, 210, 1),
-              Color.fromRGBO(116, 75, 196, 1),
-            ],
+      body: Stack(
+        children: [
+          PageView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: _screens.length,
+            onPageChanged: (int page) {
+              _getChangedPageAndMoveBar(page);
+            },
+            controller: _pageController,
+            itemBuilder: (context, index) {
+              return _screens[index];
+            },
           ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: const [
-              Image(
-                image: AssetImage('assets/GD_GUIDES_RGB_REVERSE_NO_MARK.png'),
-              ),
-              Text(
-                'Route On Call Knowledge',
-                style: TextStyle(
-                  fontFamily: 'GD Sherpa',
-                  fontSize: 22,
-                  color: Color.fromRGBO(252, 252, 252, 1),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            height: 150,
+            width: double.infinity, // Code to assign full width,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 35),
+                  child: Row(
+                    children: <Widget>[
+                      for (int i = 0; i < _screens.length; i++)
+                        if (i == currentPage) ...[circleBar(true)] else
+                          circleBar(false),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Visibility(
+                  visible: currentPage == _screens.length - 1 ? true : false,
+                  child: FloatingActionButton(
+                    onPressed: () {},
+                    shape: const BeveledRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(26))),
+                    child: const Icon(Icons.arrow_forward),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
