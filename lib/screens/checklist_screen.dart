@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:rock/screens/product_selection_screen.dart';
+import 'package:rock/model/check_item.dart';
 
-class CheckListScreen extends StatelessWidget {
+class CheckListScreen extends StatefulWidget {
   final PageController pageController;
   const CheckListScreen({Key? key, required this.pageController})
       : super(key: key);
+
+  @override
+  State<CheckListScreen> createState() => _CheckListScreenState();
+}
+
+class _CheckListScreenState extends State<CheckListScreen> {
+  final List<CheckItem> _checkList = [
+    CheckItem('Try a different Browser', false),
+    CheckItem('Clear client Cookies', false),
+    CheckItem('Add Network Tab Screenshot', false),
+    CheckItem('Add Console Error Screenshot', false),
+    CheckItem('Check if just one Product is failing', false)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +29,7 @@ class CheckListScreen extends StatelessWidget {
           children: [
             const Image(
               image: AssetImage('assets/Hand_with_pen_3.gif'),
+              height: 300,
             ),
             const Text(
               "A Checklist before Calling",
@@ -25,122 +39,62 @@ class CheckListScreen extends StatelessWidget {
                 color: Color.fromRGBO(17, 17, 17, 1),
               ),
             ),
-            const SizedBox(height: 75),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'Yes',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        pageController.nextPage(
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeOut);
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _checkList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    leading: Checkbox(
+                      value: _checkList[index].isChecked,
+                      activeColor: const Color.fromRGBO(25, 118, 210, 1),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          _checkList[index] =
+                              CheckItem(_checkList[index].item, value!);
+                        });
                       },
                     ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 30.0,
+                    title: Text(
+                      _checkList[index].item,
+                      style: TextStyle(
+                        fontFamily: 'GD Sherpa',
+                        fontSize: 16,
+                        color: _checkList[index].isChecked
+                            ? const Color.fromRGBO(25, 118, 210, 1)
+                            : const Color.fromRGBO(17, 17, 17, 1),
                       ),
                     ),
-                  ],
+                  );
+                },
+              ),
+            ),
+            Visibility(
+              visible: _checkList.every((idx) => idx.isChecked),
+              child: SizedBox(
+                height: 175,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextButton(
+                    onPressed: () {
+                      widget.pageController.nextPage(
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.easeOut);
+                    },
+                    child: const Text(
+                      "I Confirm",
+                      style: TextStyle(
+                        fontFamily: 'GD Sherpa',
+                        fontSize: 21,
+                        color: Color.fromRGBO(25, 118, 210, 1),
+                      ),
+                    ),
+                  ),
                 ),
-                const SizedBox(width: 50.0),
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'No',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const ProductSelectionScreen()),
-                        );
-                      },
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 30.0,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 50.0),
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'Not Sure',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        pageController.nextPage(
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeOut);
-                      },
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 80.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            )
+              ),
+            ),
           ],
         ),
       ),

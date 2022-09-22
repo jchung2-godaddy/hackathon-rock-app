@@ -116,9 +116,101 @@ class ProductScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        pageController.nextPage(
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeOut);
+                        showModalBottomSheet<void>(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: MediaQuery.of(context).size.height - 200,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    const Text(
+                                      'MYH Products',
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(17, 17, 17, 1),
+                                        fontFamily: "GD Sherpa",
+                                        fontSize: 32,
+                                      ),
+                                    ),
+                                    const Text(
+                                      'The MYH products are the following:',
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(17, 17, 17, 1),
+                                        fontFamily: "GD Sherpa",
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 300,
+                                      child: ListView(
+                                        children: const [
+                                          ListTile(
+                                            title: Text(
+                                              'cPanel',
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontFamily: "GD Sherpa",
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            subtitle: Text('cPanel, WHM'),
+                                          ),
+                                          ListTile(
+                                            title: Text(
+                                              'Plesk',
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontFamily: "GD Sherpa",
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            subtitle: Text('Plesk'),
+                                          ),
+                                          ListTile(
+                                            title: Text(
+                                              'Managed Wordpress',
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontFamily: "GD Sherpa",
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            subtitle: Text('Managed WordPress'),
+                                          ),
+                                          ListTile(
+                                            title: Text(
+                                              'VPS4',
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontFamily: "GD Sherpa",
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            subtitle: Text('VPS, Ded'),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    ElevatedButton(
+                                      child: const Text('Close BottomSheet'),
+                                      onPressed: () => Navigator.pop(context),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
                       },
                     ),
                     Container(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rock/screens/checklist_screen.dart';
 import 'package:rock/screens/clean_client_screen.dart';
 import 'package:rock/screens/due_diligence_screen.dart';
+import 'package:rock/screens/final_screen.dart';
 import 'package:rock/screens/intro_screen.dart';
 import 'package:rock/screens/product_screen.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GoDaddy',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
         fontFamily: 'GD Sherpa',
@@ -43,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     DueDiligenceScreen(pageController: _pageController),
     CleanClientScreen(pageController: _pageController),
     CheckListScreen(pageController: _pageController),
-    IntroScreen(pageController: _pageController),
+    FinalScreen(pageController: _pageController),
   ];
   double currentPage = 0;
   int selectedIndex = 0;
@@ -122,15 +124,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-                  Visibility(
-                    visible: currentPage == _screens.length - 1 ? true : false,
-                    child: FloatingActionButton(
-                      onPressed: () {},
-                      shape: const BeveledRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(26))),
-                      child: const Icon(Icons.arrow_forward),
-                    ),
-                  )
                 ],
               ),
             ),

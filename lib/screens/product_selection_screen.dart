@@ -29,7 +29,7 @@ class ProductSelectionScreen extends StatelessWidget {
     Product("Managed Wordpress", const Color.fromARGB(255, 0, 125, 227),
         '#managed-wordpress-1'),
     Product("DED", const Color.fromARGB(255, 85, 0, 171), '#vps4-ded4-public'),
-    Product("Product Not Shown", const Color.fromARGB(255, 255, 255, 1), '#'),
+    Product("Product Not Shown?", const Color.fromARGB(255, 0, 0, 0), '#'),
   ];
 
   @override
