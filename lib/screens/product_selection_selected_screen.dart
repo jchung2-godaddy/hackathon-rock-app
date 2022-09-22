@@ -26,13 +26,27 @@ class ProductSelectionSelectedScreen extends StatelessWidget {
                     child: Stack(children: [
                       Positioned(
                         bottom: 0,
-                        child: Text(
-                          product.name,
-                          style: const TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontFamily: "GD Sherpa",
-                            fontSize: 32,
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              product.name,
+                              style: const TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                fontFamily: "GD Sherpa",
+                                fontSize: 32,
+                              ),
+                            ),
+                            Text(
+                              product.subtitle,
+                              style: const TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, .8),
+                                fontFamily: "GD Sherpa",
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ]),
@@ -44,6 +58,26 @@ class ProductSelectionSelectedScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
+                        'Manager:',
+                        style: TextStyle(
+                          color: Color.fromRGBO(17, 17, 17, 1),
+                          fontFamily: "GD Sherpa",
+                          fontSize: 21,
+                        ),
+                      ),
+                      Text(
+                        product.manager,
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 63, 63, 63),
+                          fontFamily: "GD Sherpa",
+                          fontSize: 18,
+                        ),
+                      ),
+                      const Divider(
+                        height: 35,
+                        indent: 10,
+                      ),
+                      const Text(
                         'Slack Channel:',
                         style: TextStyle(
                           color: Color.fromRGBO(17, 17, 17, 1),
@@ -54,10 +88,14 @@ class ProductSelectionSelectedScreen extends StatelessWidget {
                       Text(
                         product.slackChannel,
                         style: const TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
+                          color: Color.fromARGB(255, 63, 63, 63),
                           fontFamily: "GD Sherpa",
                           fontSize: 18,
                         ),
+                      ),
+                      const Divider(
+                        height: 35,
+                        indent: 10,
                       ),
                     ],
                   ),

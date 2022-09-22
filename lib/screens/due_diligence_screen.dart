@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rock/screens/product_selection_screen.dart';
 
 class DueDiligenceScreen extends StatelessWidget {
   final PageController pageController;
@@ -16,6 +15,7 @@ class DueDiligenceScreen extends StatelessWidget {
           children: [
             const Image(
               image: AssetImage('assets/Customer_focus.gif'),
+              height: 250,
             ),
             const Text(
               "Some Due Diligence",
@@ -25,122 +25,169 @@ class DueDiligenceScreen extends StatelessWidget {
                 color: Color.fromRGBO(17, 17, 17, 1),
               ),
             ),
-            const SizedBox(height: 75),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'Yes',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        pageController.nextPage(
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeOut);
-                      },
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 30.0,
-                      ),
-                    ),
-                  ],
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Text(
+                "Check the browser's Network Tab* and look for what's failing.",
+                style: TextStyle(
+                  fontFamily: 'GD Sherpa',
+                  fontSize: 18,
+                  color: Color.fromRGBO(17, 17, 17, 1),
                 ),
-                const SizedBox(width: 50.0),
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'No',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const ProductSelectionScreen()),
-                        );
-                      },
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: Image(
+                      image: AssetImage('assets/Network.jpg'),
+                      height: 150,
                     ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 30.0,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 50.0),
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'Not Sure',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        pageController.nextPage(
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeOut);
-                      },
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 80.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            )
+                  ),
+                  ListTile(
+                    leading: Text('50X'),
+                    title: Text("Products"),
+                    subtitle: Text('/api/{PRODUCT}/account/{GUID}'),
+                    trailing: Icon(Icons.chevron_right_outlined),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      showModalBottomSheet<void>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            height: 600,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                const Image(
+                                  image: AssetImage('assets/appconfig.jpg'),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: const Text(
+                                    "A network call to an AppConfig is Failing?",
+                                    style: TextStyle(
+                                      fontFamily: 'GD Sherpa',
+                                      fontSize: 22,
+                                      color: Color.fromRGBO(17, 17, 17, 1),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          TextButton(
+                                            child: const Text(
+                                              'Yes',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontSize: 21,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              pageController.animateToPage(4,
+                                                  duration: const Duration(
+                                                      milliseconds: 250),
+                                                  curve: Curves.easeOut);
+                                            },
+                                          ),
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              gradient: LinearGradient(
+                                                begin: Alignment.topLeft,
+                                                end: Alignment.bottomRight,
+                                                colors: [
+                                                  Color.fromRGBO(
+                                                      25, 118, 210, 1),
+                                                  Color.fromRGBO(
+                                                      116, 75, 196, 1),
+                                                ],
+                                              ),
+                                            ),
+                                            child: const SizedBox(
+                                              height: 5.0,
+                                              width: 30.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          TextButton(
+                                            child: const Text(
+                                              'No',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontSize: 21,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              gradient: LinearGradient(
+                                                begin: Alignment.topLeft,
+                                                end: Alignment.bottomRight,
+                                                colors: [
+                                                  Color.fromRGBO(
+                                                      25, 118, 210, 1),
+                                                  Color.fromRGBO(
+                                                      116, 75, 196, 1),
+                                                ],
+                                              ),
+                                            ),
+                                            child: const SizedBox(
+                                              height: 5.0,
+                                              width: 30.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    leading: Text('50X'),
+                    title: Text("App Config"),
+                    subtitle: Text('/feature/{PRODUCT}-{APPCONFIG_NAME}'),
+                    trailing: Icon(Icons.chevron_right_outlined),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      pageController.nextPage(
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.easeOut);
+                    },
+                    leading: Text('50X'),
+                    title: Text("No Product Network Issues"),
+                    subtitle: Text('Accounts are coming in fine.'),
+                    trailing: Icon(Icons.chevron_right_outlined),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),

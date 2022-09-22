@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rock/screens/product_selection_screen.dart';
 
 class CleanClientScreen extends StatelessWidget {
   final PageController pageController;
@@ -18,14 +17,25 @@ class CleanClientScreen extends StatelessWidget {
               image: AssetImage('assets/SEO_highlite.gif'),
             ),
             const Text(
-              "Clean up your client",
+              "Clean up your client?",
               style: TextStyle(
                 fontFamily: 'GD Sherpa',
                 fontSize: 22,
                 color: Color.fromRGBO(17, 17, 17, 1),
               ),
             ),
-            const SizedBox(height: 75),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Text(
+                "Clear you cache and cookies and try again.\nAdditionally, try a different browser.",
+                style: TextStyle(
+                  fontFamily: 'GD Sherpa',
+                  fontSize: 18,
+                  color: Color.fromRGBO(17, 17, 17, 1),
+                ),
+              ),
+            ),
+            const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -33,82 +43,7 @@ class CleanClientScreen extends StatelessWidget {
                   children: [
                     TextButton(
                       child: const Text(
-                        'Yes',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        pageController.nextPage(
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.easeOut);
-                      },
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 30.0,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 50.0),
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'No',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromRGBO(17, 17, 17, 1),
-                          fontSize: 21,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const ProductSelectionScreen()),
-                        );
-                      },
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color.fromRGBO(25, 118, 210, 1),
-                            Color.fromRGBO(116, 75, 196, 1),
-                          ],
-                        ),
-                      ),
-                      child: const SizedBox(
-                        height: 5.0,
-                        width: 30.0,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 50.0),
-                Column(
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'Not Sure',
+                        'Confirm',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Color.fromRGBO(17, 17, 17, 1),

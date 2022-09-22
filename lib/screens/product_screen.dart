@@ -18,7 +18,7 @@ class ProductScreen extends StatelessWidget {
               image: AssetImage('assets/Illustration_Finger_Puppet.gif'),
             ),
             const Text(
-              'Are multiple Products affected?',
+              'Are multiple Products* affected?',
               style: TextStyle(
                 fontFamily: 'GD Sherpa',
                 fontSize: 22,
@@ -108,7 +108,7 @@ class ProductScreen extends StatelessWidget {
                   children: [
                     TextButton(
                       child: const Text(
-                        'Not Sure',
+                        '*Not Sure',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Color.fromRGBO(17, 17, 17, 1),
@@ -146,7 +146,8 @@ class ProductScreen extends StatelessWidget {
                                         fontSize: 18,
                                       ),
                                     ),
-                                    Container(
+                                    const SizedBox(height: 25),
+                                    SizedBox(
                                       height: 300,
                                       child: ListView(
                                         children: const [
@@ -201,9 +202,46 @@ class ProductScreen extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    ElevatedButton(
-                                      child: const Text('Close BottomSheet'),
-                                      onPressed: () => Navigator.pop(context),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            TextButton(
+                                              child: const Text(
+                                                'Got It',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Color.fromRGBO(
+                                                      17, 17, 17, 1),
+                                                  fontSize: 21,
+                                                ),
+                                              ),
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                            ),
+                                            Container(
+                                              decoration: const BoxDecoration(
+                                                gradient: LinearGradient(
+                                                  begin: Alignment.topLeft,
+                                                  end: Alignment.bottomRight,
+                                                  colors: [
+                                                    Color.fromRGBO(
+                                                        25, 118, 210, 1),
+                                                    Color.fromRGBO(
+                                                        116, 75, 196, 1),
+                                                  ],
+                                                ),
+                                              ),
+                                              child: const SizedBox(
+                                                height: 5.0,
+                                                width: 75.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),

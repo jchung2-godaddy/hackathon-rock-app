@@ -6,30 +6,26 @@ class ProductSelectionScreen extends StatelessWidget {
   const ProductSelectionScreen({Key? key}) : super(key: key);
 
   static final List<Product> _products = [
+    Product('Plesk', 'Next Gen Windows', const Color.fromARGB(255, 107, 66, 66),
+        '#plesk', '@astrutzenberg'),
     Product(
-      'Plesk',
-      const Color.fromARGB(255, 107, 66, 66),
-      '#plesk',
-    ),
+        "Managed WordPress",
+        'Managed WordPress 2.0/AWS/Prime',
+        const Color.fromARGB(255, 0, 125, 227),
+        '#managed-wordpress-1',
+        '@fjarret'),
     Product(
-      "VPS4",
-      const Color.fromARGB(255, 202, 21, 112),
-      '#vps4-ded4-public',
-    ),
-    Product(
-      "cPanel",
-      const Color.fromARGB(255, 160, 78, 24),
-      '#cpanel',
-    ),
-    Product(
-      "WHM",
-      const Color.fromARGB(255, 58, 49, 239),
-      '#cpanel',
-    ),
-    Product("Managed Wordpress", const Color.fromARGB(255, 0, 125, 227),
-        '#managed-wordpress-1'),
-    Product("DED", const Color.fromARGB(255, 85, 0, 171), '#vps4-ded4-public'),
-    Product("Product Not Shown?", const Color.fromARGB(255, 0, 0, 0), '#'),
+        "VPS4",
+        'VPS3/DED3/VPS4/DED4',
+        const Color.fromARGB(255, 202, 21, 112),
+        '#vps4-ded4-public',
+        '@mrichards'),
+    Product("cPanel / Business Hosting", 'Next Gen Linux',
+        const Color.fromARGB(255, 160, 78, 24), '#cpanel', '@smcelroy'),
+    Product("WHM", 'Web Host Manager', const Color.fromARGB(255, 58, 49, 239),
+        '#cpanel', '@smcelroy'),
+    Product("Product Not Shown?", 'All Other Products',
+        const Color.fromARGB(255, 0, 0, 0), '', ''),
   ];
 
   @override
@@ -40,16 +36,33 @@ class ProductSelectionScreen extends StatelessWidget {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 3 / 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20),
-              itemCount: _products.length,
-              itemBuilder: (BuildContext ctx, index) {
-                return ProductCard(product: _products[index]);
-              },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Which Product is Failing?",
+                  style: TextStyle(
+                    fontFamily: 'GD Sherpa',
+                    fontSize: 22,
+                    color: Color.fromRGBO(17, 17, 17, 1),
+                  ),
+                ),
+                Expanded(
+                  child: GridView.builder(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 200,
+                            childAspectRatio: 4.5 / 5,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20),
+                    itemCount: _products.length,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return ProductCard(product: _products[index]);
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ),

@@ -69,6 +69,9 @@ flutter:
     - Sitting_with_laptop_3.gif
     - SEO_highlite.gif
     - Wavey_Fam.gif
+    - Network.jpg
+    - appconfig.jpg
+    - console.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

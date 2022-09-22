@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rock/screens/checklist_screen.dart';
 import 'package:rock/screens/clean_client_screen.dart';
+import 'package:rock/screens/console_screen.dart';
 import 'package:rock/screens/due_diligence_screen.dart';
 import 'package:rock/screens/final_screen.dart';
 import 'package:rock/screens/intro_screen.dart';
@@ -44,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ProductScreen(pageController: _pageController),
     DueDiligenceScreen(pageController: _pageController),
     CleanClientScreen(pageController: _pageController),
+    ConsoleScreen(pageController: _pageController),
     CheckListScreen(pageController: _pageController),
     FinalScreen(pageController: _pageController),
   ];

@@ -14,13 +14,27 @@ class ProductCard extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(15),
           color: product.color,
-          child: Text(
-            product.name,
-            style: const TextStyle(
-              color: Color.fromRGBO(255, 255, 255, 1),
-              fontFamily: "GD Sherpa",
-              fontSize: 21,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                product.name,
+                style: const TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: "GD Sherpa",
+                  fontSize: 21,
+                ),
+              ),
+              Text(
+                product.subtitle,
+                style: const TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, .8),
+                  fontFamily: "GD Sherpa",
+                  fontSize: 16,
+                ),
+              ),
+            ],
           ),
         ),
       ),
