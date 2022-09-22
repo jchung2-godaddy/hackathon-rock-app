@@ -40,7 +40,11 @@ class ProductScreen extends StatelessWidget {
                           fontSize: 21,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        pageController.nextPage(
+                            duration: const Duration(milliseconds: 250),
+                            curve: Curves.easeOut);
+                      },
                     ),
                     Container(
                       decoration: const BoxDecoration(

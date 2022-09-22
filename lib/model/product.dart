@@ -3,5 +3,7 @@ import 'dart:ui';
 class Product {
   String name;
   Color color;
-  Product(this.name, this.color);
+  String slackChannel;
+
+  Product(this.name, this.color, this.slackChannel);
 }

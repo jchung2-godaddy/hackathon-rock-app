@@ -9,31 +9,27 @@ class ProductSelectionScreen extends StatelessWidget {
     Product(
       'Plesk',
       const Color.fromARGB(255, 107, 66, 66),
+      '#plesk',
     ),
     Product(
       "VPS4",
       const Color.fromARGB(255, 202, 21, 112),
+      '#vps4-ded4-public',
     ),
     Product(
       "cPanel",
       const Color.fromARGB(255, 160, 78, 24),
+      '#cpanel',
     ),
     Product(
       "WHM",
       const Color.fromARGB(255, 58, 49, 239),
+      '#cpanel',
     ),
-    Product(
-      "Managed Wordpress",
-      const Color.fromARGB(255, 0, 125, 227),
-    ),
-    Product(
-      "DED",
-      const Color.fromARGB(255, 85, 0, 171),
-    ),
-    Product(
-      "Product Not Shown",
-      const Color.fromARGB(255, 255, 255, 1),
-    ),
+    Product("Managed Wordpress", const Color.fromARGB(255, 0, 125, 227),
+        '#managed-wordpress-1'),
+    Product("DED", const Color.fromARGB(255, 85, 0, 171), '#vps4-ded4-public'),
+    Product("Product Not Shown", const Color.fromARGB(255, 255, 255, 1), '#'),
   ];
 
   @override

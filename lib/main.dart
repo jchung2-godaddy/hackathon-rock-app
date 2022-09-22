@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rock/screens/checklist_screen.dart';
+import 'package:rock/screens/clean_client_screen.dart';
+import 'package:rock/screens/due_diligence_screen.dart';
 import 'package:rock/screens/intro_screen.dart';
 import 'package:rock/screens/product_screen.dart';
 
@@ -37,9 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _screens = [
     IntroScreen(pageController: _pageController),
     ProductScreen(pageController: _pageController),
-    IntroScreen(pageController: _pageController),
-    IntroScreen(pageController: _pageController),
-    IntroScreen(pageController: _pageController),
+    DueDiligenceScreen(pageController: _pageController),
+    CleanClientScreen(pageController: _pageController),
+    CheckListScreen(pageController: _pageController),
     IntroScreen(pageController: _pageController),
   ];
   double currentPage = 0;

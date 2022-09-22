@@ -31,6 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  url_launcher: ^6.1.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -63,6 +64,10 @@ flutter:
     - GD_GO_RGB_COLOR.png
     - GD_GUIDES_RGB_REVERSE_NO_MARK.png
     - Illustration_Finger_Puppet.gif
+    - Customer_focus.gif
+    - Hand_with_pen_3.gif
+    - Sitting_with_laptop_3.gif
+    - SEO_highlite.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
