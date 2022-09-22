@@ -19,17 +19,17 @@ class IntroScreen extends StatelessWidget {
       ),
       child: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 200),
             const Image(
               image: AssetImage('assets/GD_GUIDES_RGB_REVERSE_NO_MARK.png'),
             ),
             const Text(
-              'Route On Call Knowledge for CARE',
+              'Route On Call Knowledge for C3',
               style: TextStyle(
                 fontFamily: 'GD Sherpa',
                 fontSize: 22,
-                color: Color.fromRGBO(252, 252, 252, 1),
+                color: Color.fromRGBO(252, 252, 252, .8),
               ),
             ),
             const SizedBox(height: 150),
@@ -52,6 +52,22 @@ class IntroScreen extends StatelessWidget {
                     color: Color.fromRGBO(17, 17, 17, 1), fontSize: 21),
               ),
             ),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'A BasharamaToo Project',
+                    style: TextStyle(
+                      fontFamily: 'GD Sherpa',
+                      fontSize: 16,
+                      color: Color.fromRGBO(252, 252, 252, .8),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

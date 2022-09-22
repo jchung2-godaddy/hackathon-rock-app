@@ -27,7 +27,7 @@ class CleanClientScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(15.0),
               child: Text(
-                "Clear you cache and cookies and try again.\nAdditionally, try a different browser.",
+                "Clear you cache and cookies and try again.\n\nAdditionally, try a different browser.",
                 style: TextStyle(
                   fontFamily: 'GD Sherpa',
                   fontSize: 18,

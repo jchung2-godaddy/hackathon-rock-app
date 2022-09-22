@@ -46,6 +46,122 @@ class DueDiligenceScreen extends StatelessWidget {
                     ),
                   ),
                   ListTile(
+                    onTap: () {
+                      showModalBottomSheet<void>(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return SizedBox(
+                            height: 600,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                const Image(
+                                  image: AssetImage('assets/account.jpg'),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: const Text(
+                                    "A network call to an API is Failing?",
+                                    style: TextStyle(
+                                      fontFamily: 'GD Sherpa',
+                                      fontSize: 22,
+                                      color: Color.fromRGBO(17, 17, 17, 1),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          TextButton(
+                                            child: const Text(
+                                              'Yes',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontSize: 21,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              pageController.animateToPage(4,
+                                                  duration: const Duration(
+                                                      milliseconds: 250),
+                                                  curve: Curves.easeOut);
+                                            },
+                                          ),
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              gradient: LinearGradient(
+                                                begin: Alignment.topLeft,
+                                                end: Alignment.bottomRight,
+                                                colors: [
+                                                  Color.fromRGBO(
+                                                      25, 118, 210, 1),
+                                                  Color.fromRGBO(
+                                                      116, 75, 196, 1),
+                                                ],
+                                              ),
+                                            ),
+                                            child: const SizedBox(
+                                              height: 5.0,
+                                              width: 30.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          TextButton(
+                                            child: const Text(
+                                              'No',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    17, 17, 17, 1),
+                                                fontSize: 21,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              gradient: LinearGradient(
+                                                begin: Alignment.topLeft,
+                                                end: Alignment.bottomRight,
+                                                colors: [
+                                                  Color.fromRGBO(
+                                                      25, 118, 210, 1),
+                                                  Color.fromRGBO(
+                                                      116, 75, 196, 1),
+                                                ],
+                                              ),
+                                            ),
+                                            child: const SizedBox(
+                                              height: 5.0,
+                                              width: 30.0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
                     leading: Text('50X'),
                     title: Text("Products"),
                     subtitle: Text('/api/{PRODUCT}/account/{GUID}'),
