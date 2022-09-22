@@ -25,7 +25,7 @@ class IntroScreen extends StatelessWidget {
               image: AssetImage('assets/GD_GUIDES_RGB_REVERSE_NO_MARK.png'),
             ),
             const Text(
-              'Route On Call Knowledge s',
+              'Route On Call Knowledge for CARE',
               style: TextStyle(
                 fontFamily: 'GD Sherpa',
                 fontSize: 22,
@@ -36,18 +36,20 @@ class IntroScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 pageController.nextPage(
-                    duration: const Duration(seconds: 1),
-                    curve: Curves.easeOutSine);
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeOut);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(25, 118, 210, 1),
+                elevation: 10,
+                backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
                 padding: const EdgeInsets.symmetric(
                     horizontal: 40.0, vertical: 10.0),
                 shape: const StadiumBorder(),
               ),
               child: const Text(
                 "Start",
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(
+                    color: Color.fromRGBO(17, 17, 17, 1), fontSize: 21),
               ),
             ),
           ],

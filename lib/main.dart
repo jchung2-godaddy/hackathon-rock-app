@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rock/screens/intro_screen.dart';
+import 'package:rock/screens/product_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,6 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static final PageController _pageController = PageController();
   final List<Widget> _screens = [
     IntroScreen(pageController: _pageController),
+    ProductScreen(pageController: _pageController),
+    IntroScreen(pageController: _pageController),
+    IntroScreen(pageController: _pageController),
     IntroScreen(pageController: _pageController),
     IntroScreen(pageController: _pageController),
   ];
@@ -64,12 +68,18 @@ class _MyHomePageState extends State<MyHomePage> {
       height: isActive ? 12 : 8,
       width: isActive ? 12 : 8,
       decoration: BoxDecoration(
-          color: isActive ? Colors.white : const Color.fromRGBO(17, 17, 17, 1),
-          borderRadius: const BorderRadius.all(Radius.circular(12))),
+        color: isActive
+            ? const Color.fromRGBO(25, 118, 210, 1)
+            : const Color.fromRGBO(17, 17, 17, 1),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(12),
+        ),
+      ),
     );
   }
   // blue - const Color.fromRGBO(25, 118, 210, 1),
   // black - const Color.fromRGBO(17, 17, 17, 1),
+  // purple - const Color.fromRGBO(116, 75, 196, 1),
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Positioned(
               bottom: 0,
               left: 0,
-              height: 150,
+              height: 100,
               width: MediaQuery.of(context)
                   .size
                   .width, // Code to assign full width,
