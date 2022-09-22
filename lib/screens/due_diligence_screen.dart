@@ -39,7 +39,7 @@ class DueDiligenceScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  ListTile(
+                  const ListTile(
                     title: Image(
                       image: AssetImage('assets/Network.jpg'),
                       height: 150,
@@ -60,9 +60,9 @@ class DueDiligenceScreen extends StatelessWidget {
                                 const Image(
                                   image: AssetImage('assets/account.jpg'),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: const Text(
+                                const Padding(
+                                  padding: EdgeInsets.all(15.0),
+                                  child: Text(
                                     "A network call to an API is Failing?",
                                     style: TextStyle(
                                       fontFamily: 'GD Sherpa',
@@ -162,10 +162,10 @@ class DueDiligenceScreen extends StatelessWidget {
                         },
                       );
                     },
-                    leading: Text('50X'),
-                    title: Text("Products"),
-                    subtitle: Text('/api/{PRODUCT}/account/{GUID}'),
-                    trailing: Icon(Icons.chevron_right_outlined),
+                    leading: const Text('50X'),
+                    title: const Text("Products"),
+                    subtitle: const Text('/api/{PRODUCT}/account/{GUID}'),
+                    trailing: const Icon(Icons.chevron_right_outlined),
                   ),
                   ListTile(
                     onTap: () {
@@ -182,9 +182,9 @@ class DueDiligenceScreen extends StatelessWidget {
                                 const Image(
                                   image: AssetImage('assets/appconfig.jpg'),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: const Text(
+                                const Padding(
+                                  padding: EdgeInsets.all(15.0),
+                                  child: Text(
                                     "A network call to an AppConfig is Failing?",
                                     style: TextStyle(
                                       fontFamily: 'GD Sherpa',
@@ -284,10 +284,10 @@ class DueDiligenceScreen extends StatelessWidget {
                         },
                       );
                     },
-                    leading: Text('50X'),
-                    title: Text("App Config"),
-                    subtitle: Text('/feature/{PRODUCT}-{APPCONFIG_NAME}'),
-                    trailing: Icon(Icons.chevron_right_outlined),
+                    leading: const Text('50X'),
+                    title: const Text("App Config"),
+                    subtitle: const Text('/feature/{PRODUCT}-{APPCONFIG_NAME}'),
+                    trailing: const Icon(Icons.chevron_right_outlined),
                   ),
                   ListTile(
                     onTap: () {
@@ -295,10 +295,10 @@ class DueDiligenceScreen extends StatelessWidget {
                           duration: const Duration(milliseconds: 250),
                           curve: Curves.easeOut);
                     },
-                    leading: Text('50X'),
-                    title: Text("No Product Network Issues"),
-                    subtitle: Text('Accounts are coming in fine.'),
-                    trailing: Icon(Icons.chevron_right_outlined),
+                    leading: const Text('50X'),
+                    title: const Text("No Product Network Issues"),
+                    subtitle: const Text('Accounts are coming in fine.'),
+                    trailing: const Icon(Icons.chevron_right_outlined),
                   ),
                 ],
               ),

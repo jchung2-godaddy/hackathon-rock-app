@@ -56,8 +56,8 @@ class IntroScreen extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
+                children: const [
+                  Text(
                     'A BasharamaToo Project',
                     style: TextStyle(
                       fontFamily: 'GD Sherpa',

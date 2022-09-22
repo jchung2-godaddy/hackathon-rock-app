@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (!await launchUrl(
       url,
       mode: LaunchMode.inAppWebView,
-      webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
+      webViewConfiguration: const WebViewConfiguration(enableJavaScript: true),
     )) {
       throw 'Could not launch $url';
     }
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -128,13 +128,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.people_rounded),
-              title: Text('Ultimate Org Chart'),
+              leading: const Icon(Icons.people_rounded),
+              title: const Text('Ultimate Org Chart'),
               onTap: () => {
                 _launchInWebViewWithoutJavaScript(toLaunch),
               },
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.person),
               title: Text('Made by Joon-Sub Chung'),
             ),

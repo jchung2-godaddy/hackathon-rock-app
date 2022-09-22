@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rock/model/Product.dart';
+import 'package:rock/model/product_info.dart';
 import 'package:rock/widgets/product_card.dart';
 
 class ProductSelectionScreen extends StatelessWidget {
